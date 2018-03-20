@@ -7,6 +7,8 @@ Most of the information given below is from the article
 
 https://blog.alexellis.io/kubernetes-in-10-minutes/
 
+![kube](./kube.png)
+
 ### Install kubectl
 
 <code>
