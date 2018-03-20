@@ -9,9 +9,11 @@ https://blog.alexellis.io/kubernetes-in-10-minutes/
 
 ### Install kubectl
 
+<code>
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 kubectl config view
+</code>
 
 ### Install Docker
 
@@ -19,12 +21,13 @@ sudo apt install docker.io
 
 ### Install Kubernetes apt repo
 
+<code>
 sudo apt-get update && sudo apt-get install -y apt-transport-https && curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
 echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list && sudo apt-get update
 
 sudo apt-get update
-
+</code>
 
 ### Install kubelet, kubeadm and kubernetes-cni
 
@@ -42,10 +45,12 @@ You can make this permanent by commenting out the swap file in /etc/fstab.
 
 ## Broadcast kubernetes API 
 
+
 ifconfig 
 
 Replace apiserver-advertise-address with your IP
 
+<code>
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.0.26 --kubernetes-version stable-1.9
 
 [init] Using Kubernetes version: v1.9.5
@@ -99,10 +104,11 @@ You can now join any number of machines by running the following on each node
 as root:
 
   kubeadm join --token c4e5e4.60f269136ab0c5d6 192.168.0.26:6443 --discovery-token-ca-cert-hash sha256:c32cdae9f5bc71f2e1405836b9602021208930c74c8757c78f52233c9db22703
-
+</code>
 
 ### Check the kube system
 
+<code>
 kubectl get all --namespace=kube-system
 NAME            DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
 ds/kube-proxy   1         1         1         1            1           <none>          11m
@@ -132,14 +138,15 @@ po/kube-scheduler-pt-xps-13-9350            1/1       Running   0          11m
 
 NAME           TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)         AGE
 svc/kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP   11m
-
+</code>
 
 
 ### Packet's Ubuntu installation ships without an unprivileged user-account, so let's add one.
 
+<code>
 $ sudo useradd packet -G sudo -m -s /bin/bash
 $ sudo passwd packet
-
+</code>
 
 
 
