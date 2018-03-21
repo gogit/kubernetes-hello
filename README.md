@@ -161,7 +161,7 @@ echo "export KUBECONFIG=$HOME/admin.conf" | tee -a ~/.bashrc
 
 kubectl apply -f https://raw.githubusercontent.com/gogit/kubernetes-hello/master/kube-flannel.yml
 
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
+kubectl apply -f https://raw.githubusercontent.com/gogit/kubernetes-hello/master/kube-flannel-rbac.yml
 
 kubectl taint nodes --all node-role.kubernetes.io/master-
 
@@ -176,7 +176,11 @@ kubectl get all --namespace=kube-system
 docker pull docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.3
 docker pull postgres
 
+</code>
+
 ### Create a pod
+
+<code>
 
 kubectl create -f test-pods.yaml 
 
