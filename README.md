@@ -148,6 +148,25 @@ svc/kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP   11m
 <code>
 $ sudo useradd packet -G sudo -m -s /bin/bash
 $ sudo passwd packet
+
+sudo su packet
+cd $HOME
+sudo whoami
+
+sudo cp /etc/kubernetes/admin.conf $HOME/
+sudo chown $(id -u):$(id -g) $HOME/admin.conf
+export KUBECONFIG=$HOME/admin.conf
+
+echo "export KUBECONFIG=$HOME/admin.conf" | tee -a ~/.bashrc
+
+kubectl apply -f https://raw.githubusercontent.com/gogit/kubernetes-hello/master/kube-flannel.yml
+
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
+
+kubectl taint nodes --all node-role.kubernetes.io/master-
+
+kubectl get all --namespace=kube-system
+
 </code>
 
 
