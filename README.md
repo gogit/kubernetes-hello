@@ -169,7 +169,24 @@ kubectl get all --namespace=kube-system
 
 </code>
 
+### Pull Postgres and Elasticsearch images
 
+<code>
+	
+docker pull docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.3
+docker pull postgres
+
+### Create a pod
+
+kubectl create -f test-pods.yaml 
+
+pod "www" created
+
+$ kubectl get pods
+NAME      READY     STATUS    RESTARTS   AGE
+www       2/2       Running   1          18s
+
+</code>
 
 ### References
 
