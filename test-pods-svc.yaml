@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: www
+spec:
+  type: NodePort
+  selector:
+    component: www
+    role: client
+  ports:
+  - name: http
+    port: 9200
+    protocol: TCP
+    nodePort: 30001
+  - name: postgres
+    port: 5432
+    protocol: TCP
+    nodePort: 30002
