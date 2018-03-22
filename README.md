@@ -190,7 +190,25 @@ $ kubectl get pods
 NAME      READY     STATUS    RESTARTS   AGE
 www       2/2       Running   1          18s
 
+curl -X GET http://localhost:9200
+{
+  "name" : "oFAvtzc",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "ws-zYF3WR4ucm2JbeUJJuA",
+  "version" : {
+    "number" : "6.2.3",
+    "build_hash" : "c59ff00",
+    "build_date" : "2018-03-13T10:06:29.741383Z",
+    "build_snapshot" : false,
+    "lucene_version" : "7.2.1",
+    "minimum_wire_compatibility_version" : "5.6.0",
+    "minimum_index_compatibility_version" : "5.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+
 </code>
+
 
 ### References
 
