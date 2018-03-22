@@ -8,7 +8,7 @@ spec:
     component: www
     role: client
   ports:
-  - name: http
+  - name: elasticsearch
     port: 9200
     protocol: TCP
     nodePort: 30001
