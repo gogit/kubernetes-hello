@@ -4,6 +4,11 @@ metadata:
   name: www
 spec:
   containers:
+  - name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.3
+    volumeMounts:
+    - mountPath: /tmp/elasticsearch/data
+      name: elasticsearch-vol
   - name: postgres
     image: postgres
     volumeMounts:
@@ -14,5 +19,3 @@ spec:
     emptyDir: {}
   - name: elasticsearch-vol
     emptyDir: {}
-
-
